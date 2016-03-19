@@ -7,44 +7,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
 
 public class NoteAdapter extends ArrayAdapter<String> {
 
     private Context context;
-    private ArrayList<String> titles;
-    private ArrayList<Date> dueDates;
+    private ArrayList<String> objects;
 
-    public NoteAdapter(Context context, int resource, ArrayList<String> titles, ArrayList<Date> dueDates) {
-        super(context, resource, titles);
+    public NoteAdapter(Context context, int resource, ArrayList<String> objects) {
+        super(context, resource, objects);
         this.context = context;
-        this.titles = titles;
-        this.dueDates = dueDates;
+        this.objects = objects;
     }
+
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View note = inflater.inflate(R.layout.activity_note, parent, false);
-        TextView tv =  (TextView) note.findViewById(R.id.txtTodoTitle);
-        TextView dateDue =  (TextView) note.findViewById(R.id.txtTodoDueDate);
-        String item  = this.titles.get(position);
-        Date dueDate = this.dueDates.get(position);
-
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        String dueDateStr = df.format(dueDate).toString();
-        dateDue.setText(dueDateStr);
+        TextView tv =  (TextView) note.findViewById(R.id.notetv);
+        String item  = this.objects.get(position);
         tv.setText(item);
 
-
-        Date currDate = new Date();
-        String currDateStr = df.format(dueDate).toString();
-        if(currDate.after(dueDate) && !currDateStr.equals(dueDateStr) ){
-            tv.setTextColor(Color.RED);
-            dateDue.setTextColor(Color.RED);
+        if(position % 2 == 0) {
+            tv.setTextColor(Color.parseColor("#7E57C2"));
+        } else {
+            tv.setTextColor(Color.parseColor("#7986CB"));
         }
-
         return note;
     }
 }
