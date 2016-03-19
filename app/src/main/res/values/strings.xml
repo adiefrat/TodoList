@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">TodoDoList</string>
+    <string name="app_name">TodoList</string>
     <string name="add">add</string>
     <string name="delete">delete</string>
+    <string name="AddNewTodoItem">AddNewTodoItem</string>
+    <string name="call">Call</string>
 </resources>

@@ -10,17 +10,8 @@
     tools:context="huji.ac.il.tododolist.TodoListManagerActivity"
     android:weightSum="1"
     android:orientation="vertical"
-    android:layout_weight="1.01">
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:inputType="text|textMultiLine"
-        android:ems="10"
-        android:id="@+id/edtNewItem"
-        android:ellipsize="start"
-        android:gravity="center"
-        android:background="@drawable/edit_text_style" />
+    android:layout_weight="1.01"
+    android:theme="@android:style/Theme.Translucent">
 
     <ListView
         android:layout_width="wrap_content"
